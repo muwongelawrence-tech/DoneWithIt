@@ -13,13 +13,32 @@ import { StyleSheet,
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+
 
 export default function App() {
   const {landscape} = useDeviceOrientation();
   return (
-     <WelcomeScreen/>
-    // <ViewImageScreen/>
+    // <SafeAreaView style = {styles.container}>
+
+    //   {/* <WelcomeScreen/>
+    //      <ViewImageScreen/> */}
+     
+
+    // </SafeAreaView>
+
+  <ListingDetailsScreen/>
+     
+    
+  
+    
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex :1,
+    justifyContent :"center",
+    alignItems:"center"
+  }
+});
