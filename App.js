@@ -1,19 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {useDeviceOrientation, useDimensions } from "@react-native-community/hooks";
-
-import { StyleSheet,
-         Text,
-         View,
-         SafeAreaView,
-         Platform,
-         Dimensions
-
-      } from 'react-native';
-
+import { StyleSheet } from 'react-native';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import MessageScreen from './app/screens/MessageScreen';
 
 
 export default function App() {
@@ -21,14 +13,13 @@ export default function App() {
   return (
     // <SafeAreaView style = {styles.container}>
 
-    //   {/* <WelcomeScreen/>
-    //      <ViewImageScreen/> */}
-     
-
+    //    <WelcomeScreen/>
+    //      <ViewImageScreen/> 
+     //<ListingDetailsScreen/>
     // </SafeAreaView>
 
-  <ListingDetailsScreen/>
-     
+
+    <MessageScreen/>
     
   
     
@@ -36,9 +27,5 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex :1,
-    justifyContent :"center",
-    alignItems:"center"
-  }
+  
 });
