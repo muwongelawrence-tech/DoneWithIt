@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } f
 import { Swipeable } from 'react-native-gesture-handler';
 import colors from '../config/colors';
 
-export default function ListItem({title,description,image,onPress,renderRightActions}) {
+export default function ListItem({title,description,image,onPress,renderRightActions,IconComponent}) {
     return (
         <Swipeable 
            renderRightActions = {renderRightActions}
@@ -13,11 +13,15 @@ export default function ListItem({title,description,image,onPress,renderRightAct
                 onPress = {onPress}>
                 
                 <View style = {styles.container}>
-                <Image  style ={styles.image} source = {image}/>
-                <View style ={styles.messageDetails}>
-                    <Text style = {styles.title}>{title}</Text>
-                    <Text style = {styles.description}>{description}</Text>
-                </View>
+                    {IconComponent}
+
+                    {image && <Image  style ={styles.image} source = {image}/>}
+
+                    <View style ={styles.messageDetails}>
+                        <Text style = {styles.title}>{title}</Text>
+                        {description && <Text style = {styles.description}>{description}</Text>}
+                    </View>
+
                 </View>
 
             </TouchableHighlight >
@@ -29,16 +33,16 @@ const styles = StyleSheet.create({
     
     container:{
         flexDirection:"row",
-        marginVertical:10,
+        // marginVertical:10,
         marginLeft:10,
-        padding:15
+        padding:15,
+        backgroundColor:colors.white
     },
 
     image :{
         width:70,
         height:70,
-        borderRadius:35,
-        marginRight:10  
+        borderRadius:35, 
     },
 
     title:{
@@ -51,7 +55,8 @@ const styles = StyleSheet.create({
         color: "#6e6969"
     },
     messageDetails :{
-        paddingTop:20
+        marginLeft :10,
+        justifyContent:"center"
     }
 
 });
