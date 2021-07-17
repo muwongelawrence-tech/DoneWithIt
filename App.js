@@ -12,6 +12,7 @@ import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingScreen from './app/screens/ListingScreen';
 import AppTextInput from './app/components/AppTextInput';
+import AppPicker from './app/components/AppPicker';
 
 
 export default function App() {
@@ -23,27 +24,30 @@ export default function App() {
     
 
     //    <WelcomeScreen/>
-    //     <ViewImageScreen/> 
-     //    <ListingDetailsScreen/>
-     //    <MessageScreen/>
+    //    <ViewImageScreen/> 
+     // <ListingDetailsScreen/>
+     //   <MessageScreen/>
      //   <Icon name = "email"/>
   //       <ListItem
   //        title = "my title"
   //        ImageComponent = {<Icon name = "email"/>}
   //       />
-//      <AccountScreen/> 
-//       <ListingScreen/>  
+//     <AccountScreen/> 
+ //  <ListingScreen/>  
+
+// <AppTextInput
+// placeholder = "Email"
+// icon = "email"
+// />
+// <Switch
+// value = {isNew}
+// onValueChange = {newValue => setIsNew(newValue)}
+
+// />
     
     <Screen>
-         <AppTextInput
-           placeholder = "Email"
-           icon = "email"
-         />
-         <Switch
-           value = {isNew}
-           onValueChange = {newValue => setIsNew(newValue)}
-
-         />
+      <AppPicker icon = "apps" placeholder = "Category"/>
+      <AppTextInput icon = "email" placeholder = "Email"/>
     </Screen>
    
   );

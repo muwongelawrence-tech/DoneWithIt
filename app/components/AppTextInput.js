@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         borderRadius:25,
         flexDirection:"row",
         width:"100%",
-        padding :2,
+        padding :10,
         marginVertical:10,
         overflow: "hidden"
     },
@@ -31,8 +31,6 @@ const styles = StyleSheet.create({
         fontFamily:Platform.OS ==="android" ? "Roboto" : "Avenir",
         color:colors.dark,
         width:"100%",
-        borderWidth: 0,
-        outlineStyle: "none"
     },
     icon:{
        marginRight:10 ,
