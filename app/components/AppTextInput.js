@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         overflow: "hidden"
     },
     textInput:{
+        
         fontSize:18,
         fontFamily:Platform.OS ==="android" ? "Roboto" : "Avenir",
         color:colors.dark,

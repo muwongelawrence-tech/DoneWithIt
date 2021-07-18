@@ -5,14 +5,14 @@ import AppButton from '../components/AppButton';
 export default function WelcomeScreen() {
     return (
        <ImageBackground
-       blurRadius ={2} 
-       style = {styles.background}
-       source = {require("../assets/background3.jpeg")}>
+         blurRadius ={2} 
+         style = {styles.background}
+          source = {require("../assets/background3.jpeg")}>
            <View style = {styles.logoContainer}>
 
            <Image
            style = {styles.logo}
-           source = {require("../assets/logo1.jpg")}
+           source = {require("../assets/logo2.png")}
            />
            <Text style = {styles.tagline}>Sell what you Don't Need</Text>
 

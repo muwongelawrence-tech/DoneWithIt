@@ -13,26 +13,32 @@ import AccountScreen from './app/screens/AccountScreen';
 import ListingScreen from './app/screens/ListingScreen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
+import LoginScreen from './app/screens/LoginScreen';
 
+ const categories = [
+   {label: "furniture",value:1},
+   {label: "clothing",value:2},
+   {label: "cameras",value:3},
+ ];
 
 export default function App() {
   const {landscape} = useDeviceOrientation();
 
   const [isNew, setIsNew] = useState(false);
-
+  const [category , setCategory] = useState();
   return (
     
 
-    //    <WelcomeScreen/>
+    //  <WelcomeScreen/>
     //    <ViewImageScreen/> 
      // <ListingDetailsScreen/>
-     //   <MessageScreen/>
+     //  <MessageScreen/>
      //   <Icon name = "email"/>
   //       <ListItem
   //        title = "my title"
   //        ImageComponent = {<Icon name = "email"/>}
   //       />
-//     <AccountScreen/> 
+  //    <AccountScreen/> 
  //  <ListingScreen/>  
 
 // <AppTextInput
@@ -45,11 +51,19 @@ export default function App() {
 
 // />
     
-    <Screen>
-      <AppPicker icon = "apps" placeholder = "Category"/>
-      <AppTextInput icon = "email" placeholder = "Email"/>
-    </Screen>
+    // <Screen>
+    //   <AppPicker 
+    //     selectedItem = {category}
+    //     onSelectItem = {item => setCategory(item)}
+    //      items = {categories} 
+    //      icon = "apps" 
+    //      placeholder = "Category"
+    //   />
+
+    //   <AppTextInput icon = "email" placeholder = "Email"/>
+    // </Screen>
    
+    <LoginScreen/>
   );
 }
 
