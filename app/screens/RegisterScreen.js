@@ -27,7 +27,7 @@ export default function RegisterScreen() {
                            autoCapitalize = "none"
                            autoCorrect = {false}
                             placeholder = "Name"
-                            icon = "email"
+                            icon = "account"
                             name = "name"
                         />
 

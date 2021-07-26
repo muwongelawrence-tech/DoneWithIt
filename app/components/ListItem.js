@@ -1,6 +1,7 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
+import {MaterialCommunityIcons} from "@expo/vector-icons";
 import colors from '../config/colors';
 
 export default function ListItem({title,description,image,onPress,renderRightActions,IconComponent}) {
@@ -18,10 +19,12 @@ export default function ListItem({title,description,image,onPress,renderRightAct
                     {image && <Image  style ={styles.image} source = {image}/>}
 
                     <View style ={styles.messageDetails}>
-                        <Text style = {styles.title}>{title}</Text>
-                        {description && <Text style = {styles.description}>{description}</Text>}
+                        <Text style = {styles.title} numberOfLines = {1}>{title}</Text>
+                        { description && <Text style = {styles.description}numberOfLines = {2}>{description}</Text> }
                     </View>
 
+                    <MaterialCommunityIcons name = "chevron-right" color = {colors.medium} size = {25}/>
+                    
                 </View>
 
             </TouchableHighlight >
@@ -36,7 +39,8 @@ const styles = StyleSheet.create({
         // marginVertical:10,
         marginLeft:10,
         padding:15,
-        backgroundColor:colors.white
+        backgroundColor:colors.white,
+        alignItems : "center"
     },
 
     image :{
@@ -56,7 +60,8 @@ const styles = StyleSheet.create({
     },
     messageDetails :{
         marginLeft :10,
-        justifyContent:"center"
+        justifyContent:"center",
+        flex: 1
     }
 
 });
