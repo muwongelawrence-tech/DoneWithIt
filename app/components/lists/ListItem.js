@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 import {MaterialCommunityIcons} from "@expo/vector-icons";
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 export default function ListItem({title,description,image,onPress,renderRightActions,IconComponent}) {
     return (

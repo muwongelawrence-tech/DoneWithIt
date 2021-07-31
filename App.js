@@ -10,7 +10,7 @@ import Screen from './app/screens/Screen';
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import Icon from './app/components/Icon';
-import ListItem from './app/components/ListItem';
+import ListItem from './app/components/lists/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingScreen from './app/screens/ListingScreen';
 import AppTextInput from './app/components/AppTextInput';
@@ -18,38 +18,21 @@ import AppPicker from './app/components/AppPicker';
 import LoginScreen from './app/screens/LoginScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
+import ImageInput from './app/components/ImageInput';
+import ImageInputList from './app/components/ImageInputList';
 
 
 export default function App() {
-  const {landscape} = useDeviceOrientation();
-   const [imageUri ,setImageUri] = useState();
+  //const {landscape} = useDeviceOrientation();
+   const [imageUris ,setImageUris] = useState([]);
 
-  const requestPermisson = async () => {
-    const { granted } = await Permissions.askAsync(Permissions.CAMERA ,Permissions.CALENDAR);
-   // const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-       if(!granted){
-         alert("you need to enable permission to access the library.");
-       }
+   const handleAdd = uri => {
+   setImageUris([...imageUris , uri]);
   };
 
-  useEffect(() => {
-     requestPermisson();
-  },[]);
-
-
-  // selecting an image from the library.
-
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if(!result.cancelled){
-         setImageUri(result.uri);
-      }
-    } catch (error) {
-      console.log("Error reading an Image" ,error.message);
-    }
-   
-  };
+   const handleRemove = uri => {
+        setImageUris(imageUris.filter(imageUri => imageUri !== uri));
+   };
 
   return (
     
@@ -70,8 +53,13 @@ export default function App() {
     //<ListingEditScreen/>
     //<RegisterScreen/>
     <Screen>
-      <Button title = "Select Image" onPress = {selectImage}/>
-      <Image source = {{uri : imageUri}} style ={{width:200 , height : 200}}/>
+    
+      <ImageInputList 
+      imageUris = {imageUris}
+      onAddImage = {handleAdd}
+      onRemoveImage = {handleRemove}
+      onChangeImage = {(uri) => setImageUri(uri)}
+      />
     </Screen>
 
   );
