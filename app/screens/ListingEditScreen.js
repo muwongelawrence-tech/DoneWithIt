@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { AppFormField, AppForm, AppFormPicker,SubmitButton } from '../components/forms';
 import * as Yup from "yup";
 import Screen from './Screen';
 import CategoryPickerItem from '../components/CategoryPickerItem';
+import * as Location from "expo-location";
+import FormImagePicker from '../components/forms/FormImagePicker';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label("Title"),
     price: Yup.number().required().min(1).max(10000).label("Price"),
     description: Yup.string().label("Description"),
-    category: Yup.object().required().nullable().label("Category")
+    category: Yup.object().required().nullable().label("Category"),
+    images: Yup.array().min(1,"Please select atleast one Image")
 });
 
 const categories = [
@@ -71,6 +74,26 @@ const categories = [
   ];
 
 export default function ListingEditScreen() {
+
+  const [location ,setLocation] = useState({});
+
+  const getLocation = async () => {
+     try {
+      const { granted } = await Location.requestForegroundPermissionsAsync();
+      if(!granted) return;
+      const { coords: { latitude , longitude } } = await  Location.getLastKnownPositionAsync();
+         setLocation({latitude , longitude});
+      
+     } catch (error) {
+       console.log("error",error.message);
+     }
+  };
+
+  //get location when the component renders.
+    useEffect(() => {
+         getLocation();
+   },[]);
+
     return (
         <Screen style = {styles.screen}>
             <AppForm
@@ -79,11 +102,14 @@ export default function ListingEditScreen() {
                       price:"",
                       description :"",
                       category: null,
+                      images: []
 
                   }}
-               onSubmit = {(values) => console.log(values)}
+               onSubmit = {(values) => console.log(location)}
                validationSchema = {validationSchema}
             >
+              <FormImagePicker name = "images"/>
+
                 <AppFormField
                  maxLength = {255}
                  name = "title"

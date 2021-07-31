@@ -24,15 +24,15 @@ import ImageInputList from './app/components/ImageInputList';
 
 export default function App() {
   //const {landscape} = useDeviceOrientation();
-   const [imageUris ,setImageUris] = useState([]);
+  //  const [imageUris ,setImageUris] = useState([]);
 
-   const handleAdd = uri => {
-   setImageUris([...imageUris , uri]);
-  };
+  //  const handleAdd = uri => {
+  //  setImageUris([...imageUris , uri]);
+  // };
 
-   const handleRemove = uri => {
-        setImageUris(imageUris.filter(imageUri => imageUri !== uri));
-   };
+  //  const handleRemove = uri => {
+  //       setImageUris(imageUris.filter(imageUri => imageUri !== uri));
+  //  };
 
   return (
     
@@ -50,17 +50,17 @@ export default function App() {
 
 // />
 // <LoginScreen/>
-    //<ListingEditScreen/>
+    <ListingEditScreen/>
     //<RegisterScreen/>
-    <Screen>
+    // <Screen>
     
-      <ImageInputList 
-      imageUris = {imageUris}
-      onAddImage = {handleAdd}
-      onRemoveImage = {handleRemove}
-      onChangeImage = {(uri) => setImageUri(uri)}
-      />
-    </Screen>
+    //   <ImageInputList 
+    //   imageUris = {imageUris}
+    //   onAddImage = {handleAdd}
+    //   onRemoveImage = {handleRemove}
+    //   onChangeImage = {(uri) => setImageUri(uri)}
+    //   />
+    // </Screen>
 
   );
 }
