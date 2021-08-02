@@ -7,6 +7,9 @@ import ViewImageScreen from './app/screens/ViewImageScreen';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessageScreen from './app/screens/MessageScreen';
 import Screen from './app/screens/Screen';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer }from '@react-navigation/native';
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import Icon from './app/components/Icon';
@@ -20,49 +23,20 @@ import ListingEditScreen from './app/screens/ListingEditScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ImageInput from './app/components/ImageInput';
 import ImageInputList from './app/components/ImageInputList';
+import AuthNavigator from './app/navigation/AuthNavigator';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import navigationTheme from './app/navigation/navigationTheme';
+
 
 
 export default function App() {
-  //const {landscape} = useDeviceOrientation();
-  //  const [imageUris ,setImageUris] = useState([]);
-
-  //  const handleAdd = uri => {
-  //  setImageUris([...imageUris , uri]);
-  // };
-
-  //  const handleRemove = uri => {
-  //       setImageUris(imageUris.filter(imageUri => imageUri !== uri));
-  //  };
-
+ // <AuthNavigator/>
   return (
-    
-
-    //  <WelcomeScreen/>
-    //    <ViewImageScreen/> 
-     // <ListingDetailsScreen/>
-      // <MessageScreen/>
-   
-  //    <AccountScreen/> 
- //  <ListingScreen/>  
-// <Switch
-// value = {isNew}
-// onValueChange = {newValue => setIsNew(newValue)}
-
-// />
-// <LoginScreen/>
-    <ListingEditScreen/>
-    //<RegisterScreen/>
-    // <Screen>
-    
-    //   <ImageInputList 
-    //   imageUris = {imageUris}
-    //   onAddImage = {handleAdd}
-    //   onRemoveImage = {handleRemove}
-    //   onChangeImage = {(uri) => setImageUri(uri)}
-    //   />
-    // </Screen>
-
+    <NavigationContainer theme = {navigationTheme}>
+       <AuthNavigator/>
+    </NavigationContainer>
   );
 }
+
 
 
