@@ -1,49 +1,70 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import Card from '../components/card';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import colors from '../config/colors';
 import Screen from './Screen';
 
-export default function ListingDetailsScreen() {
-    return (
-      <Screen>        
-          <View style = {styles.container}>
+export default function ListingDetailsScreen({ route }) {
+  const listing = route.params;
 
-                <Card title = "bowel" subtitle= "$6.80"
-                  image = {require("../assets/red.jpeg")}
-                  image2 = {require ("../assets/ml.jpg")}
-                  name = "Muwonge Lawrence"
-                  description = "5 listings"
-                />
-                  <Card title = "bowel" subtitle= "$3.20"
-                  image = {require("../assets/red.jpeg")}
-                  image2 = {require ("../assets/ml.jpg")}
-                  name = "Muwonge Lawrence"
-                  description = "5 listings"
-                />
-                  <Card title = "furniture" subtitle= "$5.00"
-                  image = {require("../assets/red.jpeg")}
-                  image2 = {require ("../assets/ml.jpg")}
-                  name = "Muwonge Lawrence"
-                  description = "5 listings"
-                />
+  return (
+    <Screen style = {styles.screen}>
+      <ScrollView
+        showsVerticalScrollIndicator = {false}
+      >
+        <View>
+            <Image style={styles.image} source={listing.image} />
+             <View style={styles.detailsContainer}>
+              <Text style={styles.title}>{listing.title}</Text>
+              <Text style={styles.price}>${listing.price}</Text>
+            </View>
 
-              <Card title = "furniture" subtitle= "$5.00"
-                  image = {require("../assets/red.jpeg")}
-                  image2 = {require ("../assets/ml.jpg")}
-                  name = "Muwonge Lawrence"
-                  description = "5 listings"
-                />
-          </View>
 
-        </Screen>
+            <View style={styles.userContainer}>
+              <Image style = {styles.userImage} source = {listing.image2} />
+                 <View style ={styles.userDetails}>
+                     <Text>{listing.name}</Text>
+                     <Text>{listing.description}</Text>
+                 </View>
+            </View>
 
-    )
+        </View>
+      </ScrollView>
+    </Screen>
+  );
 }
 
 const styles = StyleSheet.create({
-    container :{
-        backgroundColor:"#f8f4f4",
-        padding:20,
-        paddingTop:100,
-    }
+  screen: {
+    padding:5
+  },
+  userImage : {
+     width:60,
+     height:60,
+     borderRadius:30,
+     marginRight:5
+  },
+  userDetails:{
+     padding:10,
+  },
+  detailsContainer: {
+    padding: 20,
+  },
+  image: {
+    width: "100%",
+    height: 300,
+  },
+  price: {
+    color: colors.secondary,
+    fontWeight: "bold",
+    fontSize: 20,
+    marginVertical: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "500",
+  },
+  userContainer: {
+    flexDirection: "row",
+    marginVertical: 40,
+  },
 });

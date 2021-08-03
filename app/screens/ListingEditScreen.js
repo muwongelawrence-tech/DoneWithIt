@@ -1,5 +1,5 @@
 import React  from 'react';
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 
 import { AppFormField, AppForm, AppFormPicker,SubmitButton } from '../components/forms';
 import * as Yup from "yup";
@@ -74,62 +74,68 @@ const categories = [
   ];
 
 export default function ListingEditScreen() {
-  const location = useLocation();
+  //const location = useLocation();
     return (
-        <Screen style = {styles.screen}>
-            <AppForm
-              initialValues = {{
-                      title: "",
-                      price:"",
-                      description :"",
-                      category: null,
-                      images: []
+        <Screen >
+           <ScrollView style = {styles.container}
+             showsVerticalScrollIndicator = {false}
+             showsHorizontalScrollIndicator = {false}
+           >
+              <AppForm
+                initialValues = {{
+                        title: "",
+                        price:"",
+                        description :"",
+                        category: null,
+                        images: []
 
-                  }}
-               onSubmit = {(values) => console.log(location)}
-               validationSchema = {validationSchema}
-            >
-              <FormImagePicker name = "images"/>
+                    }}
+                onSubmit = {(values) => console.log(values)}
+                validationSchema = {validationSchema}
+              >
+                <FormImagePicker name = "images"/>
 
-                <AppFormField
-                 maxLength = {255}
-                 name = "title"
-                 placeholder = "Title"
-                />
-
-               <AppFormField
-                 maxLength = {8}
-                 name = "price"
-                 placeholder = "Price"
-                 keyboardType = "numeric"
-                />
-
-                <AppFormPicker
-                  items = {categories}
-                  name = "category"
-                  placeholder = "Category"
-                  numberOfColumns = {3}
-                  PickerItemComponent = { CategoryPickerItem }
-                />
+                  <AppFormField
+                  maxLength = {255}
+                  name = "title"
+                  placeholder = "Title"
+                  />
 
                 <AppFormField
-                 maxLength = {255}
-                 multline
-                 name = "description"
-                 placeholder = "Description"
-                 numberOfLines = {3}
-                />
+                  maxLength = {8}
+                  name = "price"
+                  placeholder = "Price"
+                  keyboardType = "numeric"
+                  />
 
-                 <SubmitButton title = "Post"/> 
+                  <AppFormPicker
+                    items = {categories}
+                    name = "category"
+                    placeholder = "Category"
+                    numberOfColumns = {3}
+                    PickerItemComponent = { CategoryPickerItem }
+                  />
 
-            </AppForm>
+                  <AppFormField
+                  maxLength = {255}
+                  multline
+                  name = "description"
+                  placeholder = "Description"
+                  numberOfLines = {3}
+                  />
+
+                  <SubmitButton title = "Post"/> 
+
+              </AppForm>
+            </ScrollView>
 
         </Screen>
     )
 }
 
 const styles = StyleSheet.create({
-    screen:{
-        padding:5
+    container:{
+        padding:10,
+        flex:1
     }
 });

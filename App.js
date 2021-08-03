@@ -26,6 +26,7 @@ import ImageInputList from './app/components/ImageInputList';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import navigationTheme from './app/navigation/navigationTheme';
+import AppNavigator from './app/navigation/AppNavigator';
 
 
 
@@ -33,7 +34,8 @@ export default function App() {
  // <AuthNavigator/>
   return (
     <NavigationContainer theme = {navigationTheme}>
-       <AuthNavigator/>
+       {/* <AuthNavigator/> */}
+       <AppNavigator/>
     </NavigationContainer>
   );
 }
