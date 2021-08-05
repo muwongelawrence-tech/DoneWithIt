@@ -36,7 +36,7 @@ const AppNavigator = () => {
             />
 
             <Tab.Screen 
-            name = "Account" 
+            name = "AccountTab" 
             component = {AccountNavigator} 
             options = {{ headerShown:false,
                 tabBarIcon: ({color , size}) => <MaterialCommunityIcons name = "account" color = {color} size = {size}/>

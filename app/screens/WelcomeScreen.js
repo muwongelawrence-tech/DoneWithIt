@@ -7,12 +7,12 @@ export default function WelcomeScreen({navigation}) {
        <ImageBackground
          blurRadius ={2} 
          style = {styles.background}
-          source = {require("../assets/background3.jpeg")}>
+          source = {require("../assets/background.jpg")}>
            <View style = {styles.logoContainer}>
 
            <Image
            style = {styles.logo}
-           source = {require("../assets/logo2.png")}
+           source = {require("../assets/logo2-red.png")}
            />
            <Text style = {styles.tagline}>Sell what you Don't Need</Text>
 
