@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useState }  from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
 import { AppFormField, AppForm, AppFormPicker,SubmitButton } from '../components/forms';
@@ -6,7 +6,12 @@ import * as Yup from "yup";
 import Screen from './Screen';
 import CategoryPickerItem from '../components/CategoryPickerItem';
 import FormImagePicker from '../components/forms/FormImagePicker';
+import { saveListing } from '../api/fakeListings';
+
+import useApi from '../../hooks/useApi';
 import useLocation from '../../hooks/useLocation';
+
+import UploadScreen from './UploadScreen';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label("Title"),
@@ -74,13 +79,41 @@ const categories = [
   ];
 
 export default function ListingEditScreen() {
-  //const location = useLocation();
+     //const location = useLocation();
+     const [uploadVisible ,setUploadVisible] = useState(false);
+
+     const[progress,setProgress] = useState(0);
+
+     //const { request:loadListings , data : listings, loading, error } = useApi();
+
+     const handleSubmit = listing => {
+         const newListing = { 
+           ...listing,
+           image2 : require("../assets/ml.jpg"),
+           name : "Muwonge Lawrence",
+          };
+        setProgress(0);
+
+        setUploadVisible(true);
+
+        setProgress(1);
+
+        saveListing(newListing);
+
+        setUploadVisible(false);
+
+        alert("Success");
+     };
+
     return (
         <Screen >
+           
            <ScrollView style = {styles.container}
              showsVerticalScrollIndicator = {false}
              showsHorizontalScrollIndicator = {false}
            >
+             {/* <UploadScreen progress = {progress} visible = { uploadVisible }/> */}
+
               <AppForm
                 initialValues = {{
                         title: "",
@@ -90,8 +123,11 @@ export default function ListingEditScreen() {
                         images: []
 
                     }}
-                onSubmit = {(values) => console.log(values)}
-                validationSchema = {validationSchema}
+                onSubmit = { (values,{ resetForm }) => {
+                  handleSubmit(values);
+                  resetForm();
+                } }
+                validationSchema = { validationSchema }
               >
                 <FormImagePicker name = "images"/>
 

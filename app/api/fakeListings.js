@@ -191,17 +191,20 @@ export const getListings = () => {
 };
 
 export const saveListing = (listing) => {
+    //console.log(listing);
     const newListing = listings.find(l => l.id === listing.id) || {};
     newListing.title = listing.title;
     newListing.price = listing.price;
-    newListing.image = listing.image;
+    newListing.imageUri = listing.images[0];
     newListing.image2 = listing.image2;
     newListing.name = listing.name;
     newListing.description = listing.description;
      
     if(!newListing.id){
         newListing.id = listings.length + 1;
+        listings.push(newListing);
     }
+    //console.log(listings);
 
     return newListing;
 }

@@ -13,7 +13,7 @@ import useApi from '../../hooks/useApi';
 
 
 
-export default function ListingScreen({navigation}) {
+export default function ListingScreen({ navigation }) {
   //call the useApi hook.
   const newdata = getListings();
 
@@ -46,6 +46,7 @@ export default function ListingScreen({navigation}) {
                             image2 = {item.image2}
                             name = {item.name}
                             description = {item.description}
+                            imageUri = {item.imageUri }
                             onPress = { () => navigation.navigate(routes.LISTING_DETAILS , item)}
                             />
                     }
