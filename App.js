@@ -27,16 +27,21 @@ import AuthNavigator from './app/navigation/AuthNavigator';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import navigationTheme from './app/navigation/navigationTheme';
 import AppNavigator from './app/navigation/AppNavigator';
+import OfflineNotice from './app/components/OfflineNotice';
 
 
 
 export default function App() {
  // <AuthNavigator/>
   return (
+    <>
+     <OfflineNotice />
     <NavigationContainer theme = {navigationTheme}>
        {/* <AuthNavigator/> */}
        <AppNavigator/>
     </NavigationContainer>
+
+    </>
   );
 }
 
